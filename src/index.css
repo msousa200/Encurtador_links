@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #2563eb;
+  --secondary: #7c3aed;
+  --accent: #06d6a0;
+  --dark: #1e293b;
+  --light: #f8fafc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-primary text-white rounded-lg font-semibold 
+           hover:bg-blue-700 active:scale-95 transition-all duration-200
+           shadow-lg hover:shadow-xl;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200
+           rounded-lg font-medium hover:bg-gray-300 dark:hover:bg-gray-600
+           transition-colors duration-200;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-600
+           rounded-lg focus:outline-none focus:border-primary dark:focus:border-accent
+           bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100
+           transition-colors duration-200;
+  }
+
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6
+           border border-gray-200 dark:border-gray-700
+           transition-all duration-200;
+  }
+
+  .feature-card {
+    @apply card hover:shadow-2xl hover:-translate-y-1 cursor-default;
+  }
+}
