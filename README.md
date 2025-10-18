@@ -47,7 +47,7 @@ Sistema completo de encurtamento de URLs com React, Express.js, Tailwind CSS e S
 
 ### 1. Clone o repositório
 ```bash
-git clone https://github.com/seu-usuario/encurtador-links.git
+git clone https://github.com/msousa200/Encurtador_links.git
 cd encurtador-links
 ```
 
