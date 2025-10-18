@@ -187,8 +187,18 @@ app.use((req, res, next) => {
   next();
 });
 
-// Inicializar banco de dados
-const db = new Database(process.env.DATABASE_PATH || './database.db');
+// 🔧 Inicializar banco de dados com fallback para memória (Vercel)
+let db;
+try {
+  // Tentar criar banco persistente
+  db = new Database(process.env.DATABASE_PATH || './database.db');
+  console.log('✅ Banco de dados SQLite persistente inicializado');
+} catch (error) {
+  // ⚠️ Fallback para memória (Vercel não suporta arquivos)
+  console.log('⚠️ Erro ao criar arquivo SQLite, usando memória:', error.message);
+  db = new Database(':memory:');
+  console.log('✅ Banco de dados SQLite em memória inicializado');
+}
 
 // Criar tabelas
 db.exec(`
