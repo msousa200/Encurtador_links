@@ -138,8 +138,8 @@ export default function UrlShortener() {
                     <label htmlFor="alias" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Alias customizado (opcional)
                     </label>
-                    <div className="flex items-center space-x-2">
-                      <span className="text-gray-500 dark:text-gray-400 text-sm">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                      <span className="text-gray-500 dark:text-gray-400 text-sm whitespace-nowrap">
                         {window.location.origin}/
                       </span>
                       <input
@@ -151,7 +151,7 @@ export default function UrlShortener() {
                         pattern="[a-z0-9-]{3,20}"
                         minLength={3}
                         maxLength={20}
-                        className="input-field flex-1"
+                        className="input-field flex-1 w-full sm:w-auto"
                       />
                     </div>
                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
