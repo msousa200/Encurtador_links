@@ -18,14 +18,19 @@ const PORT = process.env.PORT || 5000;
 
 // 🌐 Detectar URL base (produção ou desenvolvimento)
 function getBaseURL() {
-  // Vercel deployment
-  if (process.env.VERCEL_URL) {
-    return `https://${process.env.VERCEL_URL}`;
-  }
-  
-  // Custom domain
+  // Custom domain ou variável de ambiente
   if (process.env.BASE_URL) {
     return process.env.BASE_URL;
+  }
+  
+  // Vercel production domain (fixo)
+  if (process.env.VERCEL_ENV === 'production') {
+    return 'https://encurtador-links-eosin.vercel.app';
+  }
+  
+  // Vercel deployment (preview/development)
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
   }
   
   // Local development - detectar IP da rede
