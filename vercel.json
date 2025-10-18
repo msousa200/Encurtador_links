@@ -19,8 +19,20 @@
       "dest": "server/index.js"
     },
     {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/link-icon.svg",
+      "dest": "/link-icon.svg"
+    },
+    {
+      "src": "/([a-zA-Z0-9-_]{3,20})",
+      "dest": "server/index.js"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "/index.html"
     }
   ]
 }
