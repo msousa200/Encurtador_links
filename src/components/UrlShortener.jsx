@@ -64,7 +64,11 @@ export default function UrlShortener() {
 
       if (!response.ok) {
         const errorData = await response.json()
-        throw new Error(errorData.error || `Erro HTTP: ${response.status}`)
+        // 🔧 CORREÇÃO: Garantir que error é sempre string
+        const errorMessage = typeof errorData.error === 'string' 
+          ? errorData.error 
+          : (errorData.message || `Erro HTTP: ${response.status}`)
+        throw new Error(errorMessage)
       }
 
       const data = await response.json()
@@ -83,7 +87,9 @@ export default function UrlShortener() {
 
     } catch (err) {
       console.error('❌ Erro:', err)
-      setError(err.message || 'Erro ao conectar com o servidor')
+      // 🔧 CORREÇÃO: Garantir que sempre mostra string
+      const errorMessage = err instanceof Error ? err.message : 'Erro ao conectar com o servidor'
+      setError(errorMessage)
     } finally {
       setLoading(false)
     }
